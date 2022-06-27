@@ -16,11 +16,47 @@ function getWord(computerSelection) {
 
 /*play single round of game, return winner of round as string: "You lose! Paper beats Rock"*/
 /*playerSelection parameter case-insensitive*/
-/*function playRound(playerSelection, computerSelection) {
-    if (playerSelection > computerSelection) {
-         pass
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == "rock") {
+         if (computerSelection == "paper") {
+            console.log("You lose! Paper beats rock.")
+         }
+         else if (computerSelection == "scissors") {
+             console.log("You win!")
+             score += 1
+         }
+         else {
+             console.log("Tie!")
+         }
     }
-}*/
+    else if (playerSelection == "paper") {
+        if (computerSelection == "scissors") {
+           console.log("You lose! Scissors beats paper.")
+        }
+        else if (computerSelection == "rock") {
+            console.log("You win!")
+            score += 1
+        }
+        else {
+            console.log("Tie!")
+        }
+   }
+    else if (playerSelection == "scissors") {
+        if (computerSelection == "rock") {
+        console.log("You lose! Rock beats scissors.")
+        }
+        else if (computerSelection == "paper") {
+            console.log("You win!")
+            score += 1
+        }
+        else {
+            console.log("Tie!")
+        }
+    }
+    else {
+        console.log("Incorrect input")
+    }
+}
 
 /*get input from user*/
 let playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase();
