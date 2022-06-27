@@ -5,17 +5,16 @@ function computerPlay(max) {
 
 function getWord(computerSelection) {
     switch(computerSelection) {
-        case "rock":
-            return 0;
-        case "paper":
-            return 1;
-        case "scissors":
-            return 2;
+        case 0:
+            return "rock";
+        case 1:
+            return "paper";
+        case 2:
+            return "scissors";
     }
 }
 
 /*play single round of game, return winner of round as string: "You lose! Paper beats Rock"*/
-/*playerSelection parameter case-insensitive*/
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock") {
          if (computerSelection == "paper") {
@@ -58,7 +57,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/*get input from user*/
+/*get input from user, case-insensitive*/
 let playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase();
 let computerSelection = computerPlay(3);
 let score = 0;
