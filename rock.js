@@ -17,6 +17,10 @@ function getWord(computerSelection) {
 
 /*play single round of game, return winner of round as string: "You lose! Paper beats Rock"*/
 function playRound(playerSelection, computerSelection) {
+    /*get input from user, case-insensitive*/
+    playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase()
+    computerSelection = computerPlay(3)
+    console.log(computerSelection)
     if (playerSelection == "rock") {
          if (computerSelection == "paper") {
             console.log("You lose! Paper beats rock.")
@@ -63,14 +67,15 @@ function playRound(playerSelection, computerSelection) {
 
 /*calls playRound function 5 times, keeps score, returns winner/loser*/
 function game() {
-    let computerScore = 0
-    let playerScore = 0
     for (let turns = 0; turns < 5; turns++) {
         playRound()
     }
-    (computerScore > playerScore) ? console.log("You win!") : console.log("You lose!")
+    let winner = (computerScore > playerScore) ? "You win!" : "You lose!"
+    console.log(`${winner} Score: ${playerScore}`)
 }
 
-/*get input from user, case-insensitive*/
-let playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase();
-let computerSelection = computerPlay(3);
+let playerSelection;
+let computerSelection;
+let computerScore = 0
+let playerScore = 0
+game();
