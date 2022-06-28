@@ -1,9 +1,9 @@
-/*randomly return rock, paper or scissors for computer's turn*/
+/*randomly return random number 0, 1, 2 for computer's turn*/
 function computerPlay(max) {
     return getWord(Math.floor(Math.random() * max))
 }
 
-/*change random number into word*/
+/*change random number into rock, paper, scissors*/
 function getWord(computerSelection) {
     switch(computerSelection) {
         case 0:
@@ -20,44 +20,43 @@ function playRound(playerSelection, computerSelection) {
     /*get input from user, case-insensitive*/
     playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase()
     computerSelection = computerPlay(3)
-    console.log(computerSelection)
     if (playerSelection == "rock") {
          if (computerSelection == "paper") {
-            console.log("You lose! Paper beats rock.")
+            console.log(`"You lose! Paper beats rock." Score: ${playerScore}`)
             computerScore += 1
          }
          else if (computerSelection == "scissors") {
-             console.log("You win!")
+             console.log(`"You win!" Score: ${playerScore}`)
              playerScore += 1
          }
          else {
-             console.log("Tie!")
+             console.log(`"Tie!" Score: ${playerScore}`)
          }
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "scissors") {
-           console.log("You lose! Scissors beats paper.")
+           console.log(`"You lose! Scissors beats paper." Score: ${playerScore}`)
            computerScore += 1
         }
         else if (computerSelection == "rock") {
-            console.log("You win!")
+            console.log(`"You win!" Score: ${playerScore}`)
             playerScore += 1
         }
         else {
-            console.log("Tie!")
+            console.log(`"Tie!" Score: ${playerScore}`)
         }
    }
     else if (playerSelection == "scissors") {
         if (computerSelection == "rock") {
-            console.log("You lose! Rock beats scissors.")
+            console.log(`"You lose! Rock beats scissors." Score: ${playerScore}`)
             computerScore += 1
         }
         else if (computerSelection == "paper") {
-            console.log("You win!")
+            console.log(`"You win!" Score: ${playerScore}`)
             playerScore += 1
         }
         else {
-            console.log("Tie!")
+            console.log(`"Tie!" Score: ${playerScore}`)
         }
     }
     else {
