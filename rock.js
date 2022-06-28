@@ -3,6 +3,7 @@ function computerPlay(max) {
     return getWord(Math.floor(Math.random() * max))
 }
 
+/*change random number into word*/
 function getWord(computerSelection) {
     switch(computerSelection) {
         case 0:
@@ -19,10 +20,11 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock") {
          if (computerSelection == "paper") {
             console.log("You lose! Paper beats rock.")
+            computerScore += 1
          }
          else if (computerSelection == "scissors") {
              console.log("You win!")
-             score += 1
+             playerScore += 1
          }
          else {
              console.log("Tie!")
@@ -31,10 +33,11 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection == "paper") {
         if (computerSelection == "scissors") {
            console.log("You lose! Scissors beats paper.")
+           computerScore += 1
         }
         else if (computerSelection == "rock") {
             console.log("You win!")
-            score += 1
+            playerScore += 1
         }
         else {
             console.log("Tie!")
@@ -42,11 +45,12 @@ function playRound(playerSelection, computerSelection) {
    }
     else if (playerSelection == "scissors") {
         if (computerSelection == "rock") {
-        console.log("You lose! Rock beats scissors.")
+            console.log("You lose! Rock beats scissors.")
+            computerScore += 1
         }
         else if (computerSelection == "paper") {
             console.log("You win!")
-            score += 1
+            playerScore += 1
         }
         else {
             console.log("Tie!")
@@ -57,9 +61,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+/*calls playRound function 5 times, keeps score, returns winner/loser*/
+function game() {
+    let computerScore = 0
+    let playerScore = 0
+    for (let turns = 0; turns < 5; turns++) {
+        playRound()
+    }
+    (computerScore > playerScore) ? console.log("You win!") : console.log("You lose!")
+}
+
 /*get input from user, case-insensitive*/
 let playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase();
 let computerSelection = computerPlay(3);
-let score = 0;
-/*function game() - call playRound function, plays 5 rounds
-/*keeps score, reports winner or loser at end*/
