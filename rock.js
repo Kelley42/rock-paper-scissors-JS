@@ -18,63 +18,96 @@ function getWord(computerSelection) {
 /*play single round of game, return winner of round as string: "You lose! Paper beats Rock"*/
 function playRound(playerSelection, computerSelection) {
     /*get input from user, case-insensitive*/
-    playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase()
+    //playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase()
+    playerSelection = playerSelection.target["id"]
+    console.log(playerSelection)
     computerSelection = computerPlay(3)
+    let message = ""
     if (playerSelection == "rock") {
          if (computerSelection == "paper") {
-            console.log(`"You lose! Paper beats rock." Score: ${playerScore}`)
+            message = "You lose! Paper beats rock."
             computerScore += 1
          }
          else if (computerSelection == "scissors") {
-             console.log(`"You win!" Score: ${playerScore}`)
+             message = "You win!"
              playerScore += 1
          }
          else {
-             console.log(`"Tie!" Score: ${playerScore}`)
+             message = "Tie!"
          }
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "scissors") {
-           console.log(`"You lose! Scissors beats paper." Score: ${playerScore}`)
+           message = "You lose! Scissors beats paper." 
            computerScore += 1
         }
         else if (computerSelection == "rock") {
-            console.log(`"You win!" Score: ${playerScore}`)
+            message = "You win!" 
             playerScore += 1
         }
         else {
-            console.log(`"Tie!" Score: ${playerScore}`)
+            message = "Tie!" 
         }
    }
     else if (playerSelection == "scissors") {
         if (computerSelection == "rock") {
-            console.log(`"You lose! Rock beats scissors." Score: ${playerScore}`)
+            message = "You lose! Rock beats scissors."
             computerScore += 1
         }
         else if (computerSelection == "paper") {
-            console.log(`"You win!" Score: ${playerScore}`)
+            message = "You win!" 
             playerScore += 1
         }
         else {
-            console.log(`"Tie!" Score: ${playerScore}`)
+            message = "Tie!"
         }
     }
     else {
-        console.log("Incorrect input")
+        message = "Incorrect input"
     }
+    document.getElementById("round-results").innerText = `Computer played: ${computerSelection}
+    Your score: ${playerScore}
+    Computer score: ${computerScore}
+    ${message}`;
 }
 
 /*calls playRound function 5 times, keeps score, returns winner/loser*/
+
 function game() {
-    for (let turns = 0; turns < 5; turns++) {
-        playRound()
+    
+    for (let i = 0; i <= 5; i++) {
+        playRound
     }
+    printWinner(computerScore, playerScore)
+    
+    // Append winner
+    /*
+    let results = document.createElement("div")
+    results.id = "results"
+    let winnerText = document.createTextNode(`Winner: ${winner}`)
+    results.appendChild(winnerText)
+    const winnerGame = document.querySelector("div #results")
+    const roundWinner = document.querySelector("div #round-results")
+    winnerGame.insertBefore(results, roundWinner)*/
+    
+    
+}
+
+function printWinner() {
     let winner = (computerScore > playerScore) ? "You win!" : "You lose!"
     console.log(`${winner} Score: ${playerScore}`)
+    document.getElementById("winner-game").textContent = winner
 }
+
 
 let playerSelection;
 let computerSelection;
-let computerScore = 0
-let playerScore = 0
+let computerScore = 0;
+let playerScore = 0;
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach(button => button.addEventListener("click", playRound));
+//let rockButton = document.querySelector("#rock").addEventListener("click", playRound);
+//let paperButton = document.querySelector("#paper").addEventListener("click", playRound)
 game();
+
+
