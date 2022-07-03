@@ -17,9 +17,7 @@ function getWord(computerSelection) {
 
 /*play single round of game, return winner of round as string: "You lose! Paper beats Rock"*/
 function playRound(playerSelection, computerSelection) {
-    /*get input from user, case-insensitive*/
-    //playerSelection = prompt("Rock, paper, or scissors?" ).toLowerCase()
-    playerSelection = playerSelection.target["id"]
+    playerSelection = playerSelection.target.id
     console.log(playerSelection)
     computerSelection = computerPlay(3)
     let message = ""
@@ -72,14 +70,14 @@ function playRound(playerSelection, computerSelection) {
 }
 
 /*calls playRound function 5 times, keeps score, returns winner/loser*/
-
-function game() {
-    
+function game() {  
     for (let i = 0; i <= 5; i++) {
-        playRound
+        playRound(playerSelection, computerSelection)
     }
+    console.log(computerScore, playerScore)
     printWinner(computerScore, playerScore)
     
+
     // Append winner
     /*
     let results = document.createElement("div")
@@ -89,16 +87,20 @@ function game() {
     const winnerGame = document.querySelector("div #results")
     const roundWinner = document.querySelector("div #round-results")
     winnerGame.insertBefore(results, roundWinner)*/
-    
-    
+  
 }
 
-function printWinner() {
+function printWinner(computerScore, playerScore) {
     let winner = (computerScore > playerScore) ? "You win!" : "You lose!"
     console.log(`${winner} Score: ${playerScore}`)
     document.getElementById("winner-game").textContent = winner
 }
 
+
+
+
+//let rockButton = document.querySelector("#rock").addEventListener("click", playRound);
+//let paperButton = document.querySelector("#paper").addEventListener("click", playRound)
 
 let playerSelection;
 let computerSelection;
@@ -106,8 +108,11 @@ let computerScore = 0;
 let playerScore = 0;
 const buttons = document.querySelectorAll(".btn");
 buttons.forEach(button => button.addEventListener("click", playRound));
-//let rockButton = document.querySelector("#rock").addEventListener("click", playRound);
-//let paperButton = document.querySelector("#paper").addEventListener("click", playRound)
-game();
+// function buttonClick(e) {
+//     playerSelection = e.target.id
+//     playRound
+// }
+
+
 
 
